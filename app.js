@@ -33,3 +33,116 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+function prompts() {
+    return (inquirer.prompt( [
+        {
+            type: "list",
+            message: "Which type of team member would you like to add?",
+            name: "teamMember",
+            choices: ["Manager", "Engineer", "Intern"]
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Engineer";
+            },
+            name: "EngineerName",
+            type: "input",
+            message: "What is your engineer's name?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Engineer";
+            },
+            name: "EngineerID",
+            type: "input",
+            message: "What is your engineer's ID?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Engineer";
+            },
+            name: "EngineerEmail",
+            type: "input",
+            message: "What is your engineer's Email?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Engineer";
+            },
+            name: "EngineerGithub",
+            type: "input",
+            message: "What is your engineer's GitHub username?"
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Intern";
+            },
+            name: "InternName",
+            type: "input",
+            message: "What is your intern's name?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Intern";
+            },
+            name: "InternID",
+            type: "input",
+            message: "What is your intern's ID?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Intern";
+            },
+            name: "InternEmail",
+            type: "input",
+            message: "What is your intern's Email?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Intern";
+            },
+            name: "InternSchool",
+            type: "input",
+            message: "What school does your intern attend?",
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Manager";
+            },
+            name: "ManagerName",
+            type: "input",
+            message: "What is your manager's name?"
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Manager";
+            },
+            name: "ManagerID",
+            type: "input",
+            message: "What is your manager's ID?"
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Manager";
+            },
+            name: "ManagerEmail",
+            type: "input",
+            message: "What is your manager's Email?"
+        }, {
+            when: function(answers) {
+                return answers.teamMember === "Manager";
+            },
+            name: "ManagerOfficeNumber",
+            type: "input",
+            message: "What is your manager's office number?"
+        }
+
+
+        // {
+        //     type: "input",
+        //     message: "What is your GitHub username?",
+        //     name: "username",
+        // },
+        // {
+        //     type: "list",
+        //     message: "What kind of license should your project have?",
+        //     name: "license",
+        //     choices: ["MIT", "GPL", "Apache", "unlicensed"]
+        // },
+       
+        
+        ])
+    )
+};
+
+prompts();
