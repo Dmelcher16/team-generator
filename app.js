@@ -37,10 +37,27 @@ const render = require("./lib/htmlRenderer");
 function prompts() {
     return (inquirer.prompt( [
         {
+            name: "ManagerName",
+            type: "input",
+            message: "What is your manager's name?"
+        }, {
+            name: "ManagerID",
+            type: "input",
+            message: "What is your manager's ID?"
+        }, {
+            name: "ManagerEmail",
+            type: "input",
+            message: "What is your manager's Email?"
+        }, {
+            name: "ManagerOfficeNumber",
+            type: "input",
+            message: "What is your manager's office number?"
+        },
+        {
             type: "list",
             message: "Which type of team member would you like to add?",
             name: "teamMember",
-            choices: ["Manager", "Engineer", "Intern"]
+            choices: ["Engineer", "Intern"]
         }, {
             when: function(answers) {
                 return answers.teamMember === "Engineer";
@@ -97,34 +114,19 @@ function prompts() {
             name: "InternSchool",
             type: "input",
             message: "What school does your intern attend?",
-        }, {
-            when: function(answers) {
-                return answers.teamMember === "Manager";
-            },
-            name: "ManagerName",
-            type: "input",
-            message: "What is your manager's name?"
-        }, {
-            when: function(answers) {
-                return answers.teamMember === "Manager";
-            },
-            name: "ManagerID",
-            type: "input",
-            message: "What is your manager's ID?"
-        }, {
-            when: function(answers) {
-                return answers.teamMember === "Manager";
-            },
-            name: "ManagerEmail",
-            type: "input",
-            message: "What is your manager's Email?"
-        }, {
-            when: function(answers) {
-                return answers.teamMember === "Manager";
-            },
-            name: "ManagerOfficeNumber",
-            type: "input",
-            message: "What is your manager's office number?"
+        }, 
+        
+        {
+            name: "add",
+            type: "confirm",
+            message: "Would you like to add another team member?",
+            then: function(confirmed) {
+                if (true){
+                    return prompts()
+                } else{
+                    return "Your document is being created"
+                }
+            }
         }
 
 
