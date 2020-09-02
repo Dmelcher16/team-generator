@@ -19,9 +19,7 @@ const render = require("./lib/htmlRenderer");
 const team = [];
 
 managerPrompt().then(function(manager){
-    console.log(manager);
-    team.push(manager)
-    
+    team.push(manager);
     main();
 });
 
@@ -29,24 +27,20 @@ async function main() {
     const {teamMember} = await addEmployeePrompt();
     if (teamMember === "Engineer"){
         const engineer = await engineerPrompt();
-        console.log(engineer);
-        team.push(engineer)
+        team.push(engineer);
         
         main();
     } else if (teamMember === "Intern"){
         const intern = await internPrompt();
-        console.log(intern);
-        team.push(intern)
+        team.push(intern);
         
         main();
     } else {
-        // write to file
+        console.log("Your new file is ready! Check the output folder!")
         fs.writeFile(outputPath, render(team), function (err) {
-
             if (err) {
                 return console.log(err);
             }
-    
         });
     };
 };
